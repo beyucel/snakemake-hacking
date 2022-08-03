@@ -17,7 +17,10 @@ rule Poly_trans:
     "python /home/beyucel/Desktop/pymks/software/Poly_trans.py --input_filename={input} --output_filename={output}"
 
 rule LinearRegression:
-  input:"/home/beyucel/Desktop/pymks/data/Poly_vals.npy"
-  output:"/home/beyucel/Desktop/pymks/data/r2_score.npy"
+  input:
+    x= "/home/beyucel/Desktop/pymks/data/Poly_vals.npy" ,
+    y= "/home/beyucel/Desktop/pymks/data/yvals.npy"
+  output:
+    "/home/beyucel/Desktop/pymks/data/r2_score.npy"
   shell:
-    "python /home/beyucel/Desktop/pymks/software/LinearReg.py --input_filename={input} --output_filename={output}"
+    "python /home/beyucel/Desktop/pymks/software/LinearReg.py --input_filename1={input.x} --input_filename2={input.y} --output_filename={output}"

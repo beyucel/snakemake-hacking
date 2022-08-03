@@ -3,8 +3,9 @@ import warnings
 warnings.filterwarnings('ignore')
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
 from sklearn.metrics import r2_score
+from sklearn.linear_model import LinearRegression
+from dask_ml.model_selection import train_test_split
 
 import click
 
@@ -19,14 +20,14 @@ from pymks import (
 )
 
 @click.command()
-@click.option('--degree', default=2, help='boundary condition')
-@click.option('--input_filename', default='input.npy', help='CSV output file name')
+@click.option('--input_filename1', default='input.npy', help='CSV output file name')
+@click.option('--input_filename2', default='inpu2.npy', help='CSV output file name')
 @click.option('--output_filename', default='output.npy', help='CSV output file name')
-def LinearReg(input_filename,output_filename):
-    array = np.load(input_filename)
+def LinearReg(input_filename1,input_filename2,output_filename):
+    array = np.load(input_filename1)
+    y_stress = np.load(input_filename2)
     x_train, x_test, y_train, y_test = train_test_split(array,y_stress,test_size=0.2,random_state=3)
     Model = LinearRegression().fit(x_train,y_train)
-    np.save(output_filename,Poly_array)
     y_pred = Model.predict(x_test)
     r2=r2_score(y_test, y_pred)
     np.save(output_filename,r2)
