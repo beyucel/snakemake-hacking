@@ -1,0 +1,3 @@
+Building DAG of jobs...
+MissingRuleException:
+No rule to produce /home/beyucel/Desktop/pymks/software/PCA.py (if you use input functions make sure that they don't raise unexpected exceptions).

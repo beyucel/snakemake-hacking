@@ -1,0 +1,23 @@
+rule twopoint:
+  input:"/home/beyucel/Desktop/pymks/data/Microstructure.npy"
+  output:"/home/beyucel/Desktop/pymks/data/twopoint12.npy"
+  shell:
+    "python /home/beyucel/Desktop/pymks/software/twopoint2.py --input_filename={input} --output_filename={output}"
+
+rule PCA:
+  input:"/home/beyucel/Desktop/pymks/data/twopoint12.npy"
+  output:"/home/beyucel/Desktop/pymks/data/PC_scores.npy"
+  shell:
+    "python /home/beyucel/Desktop/pymks/software/PCA.py --input_filename={input} --output_filename={output}"
+
+rule Poly_trans:
+  input:"/home/beyucel/Desktop/pymks/data/PC_scores.npy"
+  output:"/home/beyucel/Desktop/pymks/data/Poly_vals.npy"
+  shell:
+    "python /home/beyucel/Desktop/pymks/software/Poly_trans.py --input_filename={input} --output_filename={output}"
+
+rule LinearRegression:
+  input:"/home/beyucel/Desktop/pymks/data/Poly_vals.npy"
+  output:"/home/beyucel/Desktop/pymks/data/r2_score.npy"
+  shell:
+    "python /home/beyucel/Desktop/pymks/software/LinearReg.py --input_filename={input} --output_filename={output}"

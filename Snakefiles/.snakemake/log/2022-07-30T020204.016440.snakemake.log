@@ -1,0 +1,31 @@
+Building DAG of jobs...
+Using shell: /nix/store/kqbccy5vkrnbx0jb2klzx1sl4cjxpvzh-bash-interactive-5.1-p16/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job         count    min threads    max threads
+--------  -------  -------------  -------------
+twopoint        1              1              1
+total           1              1              1
+
+Select jobs to execute...
+
+[Sat Jul 30 02:02:04 2022]
+rule twopoint:
+    input: /home/beyucel/Desktop/pymks/data/Microstructure.npy
+    output: /home/beyucel/Desktop/pymks/data/twopoint12.npy
+    jobid: 0
+    reason: Missing output files: /home/beyucel/Desktop/pymks/data/twopoint12.npy
+    resources: tmpdir=/run/user/1000
+
+[Sat Jul 30 02:02:04 2022]
+Error in rule twopoint:
+    jobid: 0
+    output: /home/beyucel/Desktop/pymks/data/twopoint12.npy
+    shell:
+        python software/twopoint2.py --input_filename=/home/beyucel/Desktop/pymks/data/Microstructure.npy --output_filename=/home/beyucel/Desktop/pymks/data/twopoint12.npy
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2022-07-30T020204.016440.snakemake.log

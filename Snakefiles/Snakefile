@@ -1,0 +1,5 @@
+rule twopoint:
+  input:"/home/beyucel/Desktop/pymks/data/Microstructure.npy"
+  output:"/home/beyucel/Desktop/pymks/data/twopoint12.npy"
+  shell:
+    "python /home/beyucel/Desktop/pymks/software/twopoint2.py --input_filename={input} --output_filename={output}"
